@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-const TARGET = new Date("2026-12-05T18:00:00").getTime();
+const TARGET = new Date("2025-04-25T18:00:00").getTime();
 const INITIAL_TIME = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
 function getTimeLeft() {
