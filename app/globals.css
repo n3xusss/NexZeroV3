@@ -13,8 +13,22 @@
 }
 
 :root {
-  --background: #09090b;
-  --foreground: #f4f4f5;
+  --background: #5b3518;
+  --foreground: #24150d;
+  --paper: #bf7b34;
+  --paper-soft: #9e6028;
+  --paper-strong: #824c1d;
+  --ink: #4d3422;
+  --muted: #694630;
+  --gold: #c98a24;
+  --gold-deep: #9d6115;
+  --brown: #6e431d;
+  --brown-deep: #25150d;
+  --line: rgba(82, 61, 35, 0.18);
+  --shadow: rgba(66, 34, 8, 0.16);
+  --bg: var(--paper-soft);
+  --font-body: var(--font-poppins), sans-serif;
+  --font-display: var(--font-michroma), sans-serif;
 }
 
 @theme inline {
@@ -25,7 +39,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--brown-deep);
   color: var(--foreground);
   font-family: var(--font-poppins), sans-serif;
 }
@@ -39,11 +53,15 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: rgba(37, 21, 13, 0.78);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: var(--gold);
   border-radius: 999px;
 }
 
+::selection {
+  background: rgba(216, 166, 46, 0.24);
+  color: var(--foreground);
+}

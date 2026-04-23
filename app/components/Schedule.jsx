@@ -1,13 +1,13 @@
 import React from "react";
 const NODES = [
-  { id:1, color:"#84cc16", shadow:"#84cc1688", time:"18:00 – 19:00", desc:"Participants check in and receive their badges, event kits, and team assignments." },
-  { id:2, color:"#84cc16", shadow:"#84cc1688", time:"20:00 – 21:00", desc:"Official kickoff of the NexZero CTF challenge. Overview of event rules, scoring system, and platform walkthrough." },
-  { id:3, color:"#f59e0b", shadow:"#f59e0b88", time:"21:00 – 08:00", desc:"CTF Challenge Launch: Round 1. Live scoreboard unveiled for real-time team standings." },
-  { id:4, color:"#f59e0b", shadow:"#f59e0b88", time:"08:00 – 09:00", desc:"Break and Round 2 launching." },
-  { id:5, color:"#f59e0b", shadow:"#f59e0b88", time:"12:00",          desc:"Lunch Break" },
-  { id:6, color:"#ef4444", shadow:"#ef444488", time:"18:00 – 19:00",  desc:"Final Round." },
-  { id:7, color:"#ef4444", shadow:"#ef444488", time:"11:00",           desc:"Presentation of event highlights and team performances." },
-  { id:8, color:"#ef4444", shadow:"#ef444488", time:"12:00",           desc:"Announcement of top 3 teams and awards distribution. Closing remarks by NEXUS Club and event sponsors." },
+  { id:1, color:"#d8a62e", shadow:"rgba(216,166,46,0.45)", time:"18:00 – 19:00", desc:"Participants check in and receive their badges, event kits, and team assignments." },
+  { id:2, color:"#d8a62e", shadow:"rgba(216,166,46,0.45)", time:"20:00 – 21:00", desc:"Official kickoff of the NexZero CTF challenge. Overview of event rules, scoring system, and platform walkthrough." },
+  { id:3, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"21:00 – 08:00", desc:"CTF Challenge Launch: Round 1. Live scoreboard unveiled for real-time team standings." },
+  { id:4, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"08:00 – 09:00", desc:"Break and Round 2 launching." },
+  { id:5, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"12:00",          desc:"Lunch Break" },
+  { id:6, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"18:00 – 19:00",  desc:"Final Round." },
+  { id:7, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"11:00",           desc:"Presentation of event highlights and team performances." },
+  { id:8, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"12:00",           desc:"Announcement of top 3 teams and awards distribution. Closing remarks by NEXUS Club and event sponsors." },
 ];
 
 // ── Layout constants ──────────────────────────────────────────────────────────
@@ -71,15 +71,15 @@ const LINES = [
 // ─────────────────────────────────────────────────────────────────────────────
 export default function Schedule() {
   return (
-    <section id="agenda" style={{ background:"var(--bg)", padding:"5rem clamp(1rem,4vw,4rem)", position:"relative", overflow:"hidden" }}>
-      <div aria-hidden style={{ position:"absolute", right:0, top:"12%", width:300, height:300, background:"radial-gradient(circle,rgba(200,0,0,.16) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
-      <div aria-hidden style={{ position:"absolute", left:0, bottom:"8%", width:240, height:240, background:"radial-gradient(circle,rgba(200,0,0,.12) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
+    <section id="agenda" style={{ background:"linear-gradient(180deg,#311b10 0%, #24150d 100%)", padding:"5rem clamp(1rem,4vw,4rem)", position:"relative", overflow:"hidden" }}>
+      <div aria-hidden style={{ position:"absolute", right:0, top:"12%", width:300, height:300, background:"radial-gradient(circle,rgba(201,138,36,.16) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
+      <div aria-hidden style={{ position:"absolute", left:0, bottom:"8%", width:240, height:240, background:"radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
 
       {/* Badge */}
       <div style={{ display:"flex", justifyContent:"center", marginBottom:"2.5rem", position:"relative", zIndex:1 }}>
-        <div style={{ display:"inline-flex", alignItems:"center", gap:"0.5rem", background:"rgba(0,0,0,.6)", border:"1px solid rgba(255,255,255,.2)", borderRadius:24, padding:"0.4rem 1.2rem" }}>
-          <span style={{ fontSize:"0.9rem" }}>⏱</span>
-          <span style={{ fontFamily:"var(--font-body)", fontSize:"1.14rem", color:"#fff", letterSpacing:"0.14em" }}>Schedule</span>
+        <div style={{ display:"inline-flex", alignItems:"center", gap:"0.5rem", background:"rgba(37,21,13,.92)", border:"1px solid rgba(216,166,46,.22)", borderRadius:24, padding:"0.4rem 1.2rem" }}>
+          <span style={{ fontSize:"0.9rem", color:"var(--gold)" }}>⏱</span>
+          <span style={{ fontFamily:"var(--font-body)", fontSize:"1.14rem", color:"#f4e5ca", letterSpacing:"0.14em" }}>Schedule</span>
         </div>
       </div>
 
@@ -91,23 +91,14 @@ export default function Schedule() {
       {/* Mobile */}
       <div className="sched-mobile" style={{ display:"flex", flexDirection:"column", gap:"0.9rem", maxWidth:480, margin:"0 auto", position:"relative", zIndex:1 }}>
         {NODES.map(n => (
-          <div key={n.id} style={{ display:"flex", gap:"1rem", alignItems:"flex-start", background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:10, padding:"0.85rem 1rem" }}>
+          <div key={n.id} style={{ display:"flex", gap:"1rem", alignItems:"flex-start", background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.08)", borderRadius:14, padding:"0.85rem 1rem", boxShadow:"0 10px 22px rgba(0,0,0,.18)" }}>
             <MobileCircle node={n} />
             <div>
-              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.07rem", fontWeight:700, color:"#fff", marginBottom:"0.2rem" }}>{n.time}</div>
-              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.01rem", color:"#999", lineHeight:1.6 }}>{n.desc}</div>
+              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.07rem", fontWeight:700, color:"#f4e5ca", marginBottom:"0.2rem" }}>{n.time}</div>
+              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.01rem", color:"rgba(244,229,202,.72)", lineHeight:1.6 }}>{n.desc}</div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Register now */}
-      <div style={{ paddingLeft:"clamp(1rem,8%,80px)", marginTop:"2.5rem", position:"relative", zIndex:1 }}>
-        <span style={{ fontFamily:"Georgia,serif", fontSize:"1.5rem", color:"#fff", fontStyle:"italic", opacity:.9 }}>register now</span>
-        <svg width="90" height="44" viewBox="0 0 90 44" fill="none" style={{ display:"block", marginTop:4 }}>
-          <path d="M8 8 C 30 50, 60 -10, 82 28" stroke="white" strokeWidth="1.4" fill="none" strokeDasharray="5 3" opacity="0.7"/>
-          <polygon points="79,22 88,30 80,36" fill="white" opacity="0.7"/>
-        </svg>
       </div>
 
       <style>{`
@@ -156,10 +147,10 @@ function NodeBlock({ node, cx, cy, textSide }) {
         justifyContent: textSide === "above" ? "flex-end" : "flex-start",
         padding: textSide === "above" ? "0 0 4px" : "4px 0 0",
       }}>
-        <div style={{ fontFamily:"var(--font-body)", fontSize:"1rem", fontWeight:700, color:"#e5e5e5", letterSpacing:"0.04em", marginBottom:"0.3rem", whiteSpace:"nowrap" }}>
+        <div style={{ fontFamily:"var(--font-body)", fontSize:"1rem", fontWeight:700, color:"#f4e5ca", letterSpacing:"0.04em", marginBottom:"0.3rem", whiteSpace:"nowrap" }}>
           {node.time}
         </div>
-        <div style={{ fontFamily:"var(--font-body)", fontSize:"0.96rem", color:"#aaa", lineHeight:1.6, wordBreak:"break-word" }}>
+        <div style={{ fontFamily:"var(--font-body)", fontSize:"0.96rem", color:"rgba(244,229,202,.72)", lineHeight:1.6, wordBreak:"break-word" }}>
           {node.desc}
         </div>
       </div>
@@ -170,7 +161,7 @@ function NodeBlock({ node, cx, cy, textSide }) {
         width:CD, height:CD, borderRadius:"50%",
         background:node.color, boxShadow:`0 0 20px ${node.shadow}`,
         display:"flex", alignItems:"center", justifyContent:"center",
-        fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1.43rem", color:"#fff",
+        fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1.43rem", color:"#f4e5ca",
         zIndex:4,
       }}>
         {node.id}
@@ -185,9 +176,9 @@ function Line({ x1, y1, x2, y2 }) {
   const angle  = Math.atan2(dy,dx) * (180/Math.PI);
   return (
     <div aria-hidden style={{
-      position:"absolute", left:x1, top:y1,
-      width:length, height:2,
-      background:"rgba(255,255,255,0.22)",
+        position:"absolute", left:x1, top:y1,
+        width:length, height:2,
+      background:"rgba(244,229,202,0.16)",
       transformOrigin:"0 50%",
       transform:`rotate(${angle}deg)`,
       zIndex:1, borderRadius:1,
@@ -197,7 +188,7 @@ function Line({ x1, y1, x2, y2 }) {
 
 function MobileCircle({ node }) {
   return (
-    <div style={{ width:52, height:52, borderRadius:"50%", background:node.color, boxShadow:`0 0 14px ${node.shadow}`, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1rem", color:"#fff", flexShrink:0 }}>
+    <div style={{ width:52, height:52, borderRadius:"50%", background:node.color, boxShadow:`0 0 14px ${node.shadow}`, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1rem", color:"#f4e5ca", flexShrink:0 }}>
       {node.id}
     </div>
   );

@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   title: "NexZero",
   description: "NexZero cybersecurity challenge landing page",
   icons: {
-    icon: [{ url: "/nexus.png?v=2", type: "image/png" }],
-    shortcut: [{ url: "/nexus.png?v=2", type: "image/png" }],
+    icon: [{ url: "/nexus%20logo.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/nexus%20logo.svg", type: "image/svg+xml" }],
     apple: [{ url: "/nexus.png?v=2", type: "image/png" }],
   },
 };
