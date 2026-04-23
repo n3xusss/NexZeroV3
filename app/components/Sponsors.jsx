@@ -19,7 +19,7 @@ const SPONSORS = [
   },
   {
     name: "Cyber Wave",
-    href: "https://offensivewave.com/",
+    href: "https://training.cyberwave.network/",
     src: "/sponsors/cyberwave-logo.png",
     wrapperClassName: "mx-auto w-48 max-w-full",
     logoHeightClassName: "h-24",
