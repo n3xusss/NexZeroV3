@@ -26,8 +26,8 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
-  title: "NexZero",
-  description: "NexZero cybersecurity challenge landing page",
+  title: "NexZero CTF",
+  description: "Nexzero CTF is the official website for the NexZero cybersecurity challenge by NEXUS, featuring event details, schedule, sponsors, and participant information.",
   icons: {
     icon: [{ url: "/nexus%20logo.svg", type: "image/svg+xml" }],
     shortcut: [{ url: "/nexus%20logo.svg", type: "image/svg+xml" }],
