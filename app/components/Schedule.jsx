@@ -1,108 +1,319 @@
 import React from "react";
-const NODES = [
-  { id:1, color:"#d8a62e", shadow:"rgba(216,166,46,0.45)", time:"18:00 – 19:00", desc:"Participants check in and receive their badges, event kits, and team assignments." },
-  { id:2, color:"#d8a62e", shadow:"rgba(216,166,46,0.45)", time:"20:00 – 21:00", desc:"Official kickoff of the NexZero CTF challenge. Overview of event rules, scoring system, and platform walkthrough." },
-  { id:3, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"21:00 – 08:00", desc:"CTF Challenge Launch: Round 1. Live scoreboard unveiled for real-time team standings." },
-  { id:4, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"08:00 – 09:00", desc:"Break and Round 2 launching." },
-  { id:5, color:"#b67b1f", shadow:"rgba(182,123,31,0.42)", time:"12:00",          desc:"Lunch Break" },
-  { id:6, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"18:00 – 19:00",  desc:"Final Round." },
-  { id:7, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"11:00",           desc:"Presentation of event highlights and team performances." },
-  { id:8, color:"#595148", shadow:"rgba(89,81,72,0.4)", time:"12:00",           desc:"Announcement of top 3 teams and awards distribution. Closing remarks by NEXUS Club and event sponsors." },
+
+const EVENTS = [
+  {
+    id: 1,
+    day: "Day 1",
+    dayStart: true,
+    color: "#d8a62e",
+    shadow: "rgba(216,166,46,0.45)",
+    time: "18:00",
+    desc: "Check-In",
+    details: "Arrival, badge pickup, and team confirmation.",
+  },
+  {
+    id: 2,
+    day: "Day 1",
+    color: "#d8a62e",
+    shadow: "rgba(216,166,46,0.45)",
+    time: "19:00",
+    desc: "Opening Ceremony",
+    details: "Welcome remarks and the main event briefing.",
+  },
+  {
+    id: 3,
+    day: "Day 1",
+    color: "#c98a24",
+    shadow: "rgba(201,138,36,0.42)",
+    time: "21:00",
+    desc: "Begin the competition",
+    details: "CTF platform opens and the challenge officially starts.",
+    accent: "gold",
+  },
+  {
+    id: 4,
+    day: "Day 1",
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "22:30",
+    desc: "Dinner",
+    details: "Dinner service and a short recharge break.",
+  },
+  {
+    id: 5,
+    day: "Day 1",
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "23:00",
+    desc: "Working",
+    details: "Teams continue solving challenges and scoring.",
+  },
+  {
+    id: 6,
+    day: "Day 2",
+    dayStart: true,
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "04:00",
+    desc: "Snacks",
+    details: "Late-night snacks break between the work sessions.",
+  },
+  {
+    id: 7,
+    day: "Day 2",
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "08:00",
+    desc: "Breakfast",
+    details: "Morning breakfast before activities resume.",
+  },
+  {
+    id: 8,
+    day: "Day 2",
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "12:00",
+    desc: "Lunch and prayer",
+    details: "Midday break for lunch and prayer.",
+  },
+  {
+    id: 9,
+    day: "Day 2",
+    color: "#d8a62e",
+    shadow: "rgba(216,166,46,0.45)",
+    time: "14:00",
+    desc: "Conference 1",
+    details: "Conference session in parallel with the competition, open to all players.",
+    accent: "gold",
+  },
+  {
+    id: 10,
+    day: "Day 2",
+    color: "#d8a62e",
+    shadow: "rgba(216,166,46,0.45)",
+    time: "16:00",
+    desc: "Conference 2",
+    details: "Second conference in parallel with the competition, open to all players.",
+    accent: "gold",
+  },
+  {
+    id: 11,
+    day: "Day 2",
+    color: "#b67b1f",
+    shadow: "rgba(182,123,31,0.42)",
+    time: "20:00",
+    desc: "Dinner",
+    details: "Evening dinner before the final work block.",
+  },
+  {
+    id: 12,
+    day: "Day 2",
+    color: "#595148",
+    shadow: "rgba(89,81,72,0.4)",
+    time: "21:00",
+    desc: "Competition Continues",
+    details: "Teams keep competing through the final night session.",
+  },
+  {
+    id: 13,
+    day: "Day 3",
+    dayStart: true,
+    color: "#c65e48",
+    shadow: "rgba(198,94,72,0.42)",
+    time: "08:00",
+    desc: "End of the competition",
+    details: "Challenge submissions close and scores freeze.",
+    accent: "red",
+  },
+  {
+    id: 14,
+    day: "Day 3",
+    color: "#595148",
+    shadow: "rgba(89,81,72,0.4)",
+    time: "08:30",
+    desc: "Breakfast",
+    details: "Morning breakfast before final activities.",
+  },
+  {
+    id: 15,
+    day: "Day 3",
+    color: "#595148",
+    shadow: "rgba(89,81,72,0.4)",
+    time: "09:00",
+    desc: "Closing Ceremony",
+    details: "Awards, recognitions, and final remarks.",
+  },
+  {
+    id: 16,
+    day: "Day 3",
+    color: "#595148",
+    shadow: "rgba(89,81,72,0.4)",
+    time: "10:00",
+    desc: "Take souvenirs",
+    details: "Collect souvenirs, photos, and departures.",
+  },
 ];
 
-// ── Layout constants ──────────────────────────────────────────────────────────
-const CW   = 1248;   // canvas width  px
-const CR   = 29;    // circle radius px
-const CD   = CR*2;  // circle diameter
+const DAY_ORDER = ["Day 1", "Day 2", "Day 3"];
 
-// Text box dimensions
-const TW   = 202;   // text box width
-const TH   = 143;   // text box height (reserved above / below circle)
-const GAP  = 13;    // gap between circle edge and text box
+const CW = 1340;
+const CH = 1180;
+const CR = 29;
+const CD = CR * 2;
+const TW = 236;
+const TH = 168;
+const GAP = 14;
 
-// Column X centers
-const COL  = [
-  Math.round(CW * 0.07),  //  67  — node 1
-  Math.round(CW * 0.25),  // 240  — nodes 2, 8
-  Math.round(CW * 0.47),  // 451  — nodes 3, 7
-  Math.round(CW * 0.69),  // 662  — nodes 4, 6
-  Math.round(CW * 0.91),  // 874  — node  5
+const ROWS = [
+  { y: 120, xs: [110, 410, 710, 1010, 1230], eventIndices: [0, 1, 2, 3, 4] },
+  { y: 410, xs: [1230, 1010, 710, 410], eventIndices: [5, 6, 7, 8] },
+  { y: 700, xs: [410, 710, 1010], eventIndices: [9, 10, 11] },
+  { y: 990, xs: [1010, 710, 410, 110], eventIndices: [12, 13, 14, 15] },
 ];
 
-// ROW[1] === ROW[2] so mid and bottom share same cy.
-// But bottom nodes are BELOW the line → push them down by enough to not collide.
-// Strategy: bottom nodes sit at ROW[1] + 160 so their "above" text ends at ROW[1]+160-CR-GAP
-// and the "below" text of row2 ends at ROW[1]+CR+GAP+TH. We need a gap between these two.
-// Let's recalculate with separate rows:
-//   ROW_MID    = 200   (nodes 2-5, text below)
-//   ROW_BOT    = 200 + CD + 2*GAP + 2*TH  = 200+44+20+220 = 484  (nodes 6-8, text above)
-// Canvas height = ROW_BOT + CR + GAP + 30(margin) = 484+22+10+30 = 546
-
-const ROW_MID = 260;
-const ROW_BOT = ROW_MID + CD + 2 * GAP + 2 * TH; // 200+44+20+220 = 484
-const ROW_TOP = 130; // node 1
-
-const CH = ROW_BOT + CR + GAP + TH + 40; // total canvas height ≈ 566
-
-// Redefine placements with correct rows
-const FINAL_PLACEMENTS = [
-  { nodeIdx:0, cx:COL[0], cy:ROW_TOP, textSide:"below" }, // 1
-  { nodeIdx:1, cx:COL[1], cy:ROW_MID, textSide:"below" }, // 2
-  { nodeIdx:2, cx:COL[2], cy:ROW_MID, textSide:"below" }, // 3
-  { nodeIdx:3, cx:COL[3], cy:ROW_MID, textSide:"below" }, // 4
-  { nodeIdx:4, cx:COL[4], cy:ROW_MID, textSide:"below" }, // 5
-  { nodeIdx:7, cx:COL[1], cy:ROW_BOT, textSide:"below" }, // 8
-  { nodeIdx:6, cx:COL[2], cy:ROW_BOT, textSide:"below" }, // 7
-  { nodeIdx:5, cx:COL[3], cy:ROW_BOT, textSide:"below" }, // 6
+const CONNECTORS = [
+  { x1: 110, y1: 120, x2: 1230, y2: 120 },
+  { x1: 1230, y1: 120, x2: 1230, y2: 410 },
+  { x1: 1230, y1: 410, x2: 410, y2: 410 },
+  { x1: 410, y1: 410, x2: 410, y2: 700 },
+  { x1: 410, y1: 700, x2: 1010, y2: 700 },
+  { x1: 1010, y1: 700, x2: 1010, y2: 990 },
+  { x1: 1010, y1: 990, x2: 110, y2: 990 },
 ];
 
-// Lines (px coords)
-const LINES = [
-  // node1 drops down to ROW_MID
-  { x1:COL[0], y1:ROW_TOP+CR, x2:COL[0], y2:ROW_MID },
-  // horizontal across ROW_MID: col0 → col4
-  { x1:COL[0], y1:ROW_MID,    x2:COL[4], y2:ROW_MID },
-  // col4 drops from ROW_MID to ROW_BOT
-  { x1:COL[4], y1:ROW_MID+CR, x2:COL[4], y2:ROW_BOT },
-  // horizontal across ROW_BOT: col4 → col1 (right to left)
-  { x1:COL[1], y1:ROW_BOT,    x2:COL[4], y2:ROW_BOT },
-];
+const DESKTOP_PLACEMENTS = ROWS.flatMap((row) =>
+  row.eventIndices.map((eventIndex, index) => ({
+    eventIndex,
+    cx: row.xs[index],
+    cy: row.y,
+  })),
+);
 
-// ─────────────────────────────────────────────────────────────────────────────
+const xPercent = (value) => `${(value / CW) * 100}%`;
+const yPercent = (value) => `${(value / CH) * 100}%`;
+const wPercent = (value) => `${(value / CW) * 100}%`;
+const hPercent = (value) => `${(value / CH) * 100}%`;
+
 export default function Schedule() {
   return (
-    <section id="agenda" style={{ background:"linear-gradient(180deg,#311b10 0%, #24150d 100%)", padding:"5rem clamp(1rem,4vw,4rem)", position:"relative", overflow:"hidden" }}>
-      <div aria-hidden style={{ position:"absolute", right:0, top:"12%", width:300, height:300, background:"radial-gradient(circle,rgba(201,138,36,.16) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
-      <div aria-hidden style={{ position:"absolute", left:0, bottom:"8%", width:240, height:240, background:"radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
+    <section
+      id="agenda"
+      style={{
+        background: "linear-gradient(180deg,#311b10 0%, #24150d 100%)",
+        padding: "5rem clamp(1rem,4vw,4rem)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          right: 0,
+          top: "12%",
+          width: 300,
+          height: 300,
+          background: "radial-gradient(circle,rgba(201,138,36,.16) 0%,transparent 70%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          left: 0,
+          bottom: "8%",
+          width: 240,
+          height: 240,
+          background: "radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 70%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
-      {/* Badge */}
-      <div style={{ display:"flex", justifyContent:"center", marginBottom:"2.5rem", position:"relative", zIndex:1 }}>
-        <div style={{ display:"inline-flex", alignItems:"center", gap:"0.5rem", background:"rgba(37,21,13,.92)", border:"1px solid rgba(216,166,46,.22)", borderRadius:24, padding:"0.4rem 1.2rem" }}>
-          <span style={{ fontSize:"0.9rem", color:"var(--gold)" }}>⏱</span>
-          <span style={{ fontFamily:"var(--font-body)", fontSize:"1.14rem", color:"#f4e5ca", letterSpacing:"0.14em" }}>Schedule</span>
+      <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1560, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "2.5rem" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: "rgba(37,21,13,.92)",
+              border: "1px solid rgba(216,166,46,.22)",
+              borderRadius: 24,
+              padding: "0.4rem 1.2rem",
+            }}
+          >
+            <span style={{ fontSize: "0.9rem", color: "var(--gold)" }}>⏱</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "1.2rem", color: "#f4e5ca", letterSpacing: "0.14em" }}>
+              Schedule
+            </span>
+          </div>
+        </div>
+
+        <div className="sched-desktop" style={{ display: "none", position: "relative", zIndex: 1 }}>
+          <DesktopCanvas />
+        </div>
+
+        <div className="sched-mobile" style={{ display: "flex", flexDirection: "column", gap: "1.25rem", maxWidth: 620, margin: "0 auto", position: "relative", zIndex: 1 }}>
+          {DAY_ORDER.map((day) => (
+            <div key={day} style={{ display: "grid", gap: "0.9rem" }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "fit-content",
+                  borderRadius: 999,
+                  border: "1px solid rgba(216,166,46,.16)",
+                  background: "rgba(255,248,236,.04)",
+                  padding: "0.35rem 0.85rem",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.96rem",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "rgba(244,229,202,.82)",
+                }}
+              >
+                {day}
+              </div>
+
+              {EVENTS.filter((event) => event.day === day).map((event) => (
+                <div
+                  key={event.id}
+                  style={{
+                    display: "flex",
+                    gap: "1rem",
+                    alignItems: "flex-start",
+                    background: "rgba(255,255,255,.03)",
+                    border: "1px solid rgba(255,255,255,.08)",
+                    borderRadius: 14,
+                    padding: "0.95rem 1rem",
+                    boxShadow: "0 10px 22px rgba(0,0,0,.18)",
+                  }}
+                >
+                  <MobileCircle event={event} />
+                  <div>
+                    <div style={{ fontFamily: "var(--font-body)", fontSize: "1.22rem", fontWeight: 700, color: event.accent === "gold" ? "var(--gold)" : event.accent === "red" ? "#f06b55" : "#f4e5ca", marginBottom: "0.18rem" }}>
+                      {event.time}
+                    </div>
+                    <div style={{ fontFamily: "var(--font-body)", fontSize: "1.1rem", fontWeight: 600, color: event.accent === "gold" ? "rgba(216,166,46,.92)" : event.accent === "red" ? "rgba(240,107,85,.9)" : "rgba(244,229,202,.88)", lineHeight: 1.45, marginBottom: "0.2rem" }}>
+                      {event.desc}
+                    </div>
+                    <div style={{ fontFamily: "var(--font-body)", fontSize: "0.98rem", color: "rgba(244,229,202,.74)", lineHeight: 1.55 }}>
+                      {event.details}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Desktop */}
-      <div className="sched-desktop" style={{ display:"none", position:"relative", zIndex:1 }}>
-        <DesktopCanvas />
-      </div>
-
-      {/* Mobile */}
-      <div className="sched-mobile" style={{ display:"flex", flexDirection:"column", gap:"0.9rem", maxWidth:480, margin:"0 auto", position:"relative", zIndex:1 }}>
-        {NODES.map(n => (
-          <div key={n.id} style={{ display:"flex", gap:"1rem", alignItems:"flex-start", background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.08)", borderRadius:14, padding:"0.85rem 1rem", boxShadow:"0 10px 22px rgba(0,0,0,.18)" }}>
-            <MobileCircle node={n} />
-            <div>
-              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.07rem", fontWeight:700, color:"#f4e5ca", marginBottom:"0.2rem" }}>{n.time}</div>
-              <div style={{ fontFamily:"var(--font-body)", fontSize:"1.01rem", color:"rgba(244,229,202,.72)", lineHeight:1.6 }}>{n.desc}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-
       <style>{`
-        @media (min-width: 768px) {
+        @media (min-width: 1100px) {
           .sched-desktop { display:block !important; }
           .sched-mobile  { display:none  !important; }
         }
@@ -113,83 +324,170 @@ export default function Schedule() {
 
 function DesktopCanvas() {
   return (
-    <div style={{ maxWidth:CW, margin:"0 auto", position:"relative", height:CH, width:"100%" }}>
-      {/* Lines rendered first — behind everything */}
-      {LINES.map((l,i) => <Line key={i} {...l} />)}
+    <div style={{ maxWidth: CW, margin: "0 auto", position: "relative", width: "100%", aspectRatio: `${CW} / ${CH}` }}>
+      {CONNECTORS.map((connector, index) => (
+        <Line key={index} {...connector} />
+      ))}
 
-      {/* Nodes */}
-      {FINAL_PLACEMENTS.map(p => {
-        const node = NODES[p.nodeIdx];
-        return <NodeBlock key={node.id} node={node} cx={p.cx} cy={p.cy} textSide={p.textSide} />;
+      {DESKTOP_PLACEMENTS.map((placement) => {
+        const event = EVENTS[placement.eventIndex];
+        return <NodeBlock key={event.id} event={event} cx={placement.cx} cy={placement.cy} />;
       })}
     </div>
   );
 }
 
-function NodeBlock({ node, cx, cy, textSide }) {
+function NodeBlock({ event, cx, cy }) {
   const circleLeft = cx - CR;
-  const circleTop  = cy - CR;
-
-  // Text box top — placed so it doesn't overlap the circle
-  const textTop  = textSide === "below"
-    ? cy + CR + GAP                  // text starts just below circle bottom
-    : cy - CR - GAP - TH;           // text ends just above circle top
+  const circleTop = cy - CR;
   const textLeft = cx - TW / 2;
+  const textTop = cy + CR + GAP;
+  const timeColor = event.accent === "gold" ? "var(--gold)" : event.accent === "red" ? "#f06b55" : "#f4e5ca";
+  const descColor = event.accent === "gold" ? "rgba(216,166,46,.92)" : event.accent === "red" ? "rgba(240,107,85,.9)" : "rgba(244,229,202,.74)";
 
   return (
     <>
-      {/* Text */}
-      <div style={{
-        position:"absolute", left:textLeft, top:textTop,
-        width:TW, height:TH,
-        textAlign:"center", zIndex:3,
-        display:"flex", flexDirection:"column", alignItems:"center",
-        justifyContent: textSide === "above" ? "flex-end" : "flex-start",
-        padding: textSide === "above" ? "0 0 4px" : "4px 0 0",
-      }}>
-        <div style={{ fontFamily:"var(--font-body)", fontSize:"1rem", fontWeight:700, color:"#f4e5ca", letterSpacing:"0.04em", marginBottom:"0.3rem", whiteSpace:"nowrap" }}>
-          {node.time}
+      <div
+        style={{
+          position: "absolute",
+          left: xPercent(textLeft),
+          top: yPercent(textTop),
+          width: wPercent(TW),
+          height: hPercent(TH),
+          textAlign: "center",
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          paddingTop: 4,
+        }}
+      >
+        {event.dayStart ? (
+          <div
+            style={{
+              marginBottom: "0.45rem",
+              fontFamily: "var(--font-body)",
+              fontSize: "0.82rem",
+              fontWeight: 700,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(216,166,46,.84)",
+            }}
+          >
+            {event.day}
+          </div>
+        ) : null}
+        <div
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "1.18rem",
+            fontWeight: 700,
+            color: timeColor,
+            letterSpacing: "0.04em",
+            marginBottom: "0.16rem",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {event.time}
         </div>
-        <div style={{ fontFamily:"var(--font-body)", fontSize:"0.96rem", color:"rgba(244,229,202,.72)", lineHeight:1.6, wordBreak:"break-word" }}>
-          {node.desc}
+        <div
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "1.08rem",
+            fontWeight: 600,
+            color: descColor,
+            lineHeight: 1.45,
+            marginBottom: "0.18rem",
+            wordBreak: "break-word",
+          }}
+        >
+          {event.desc}
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.9rem",
+            color: "rgba(244,229,202,.72)",
+            lineHeight: 1.55,
+            wordBreak: "break-word",
+          }}
+        >
+          {event.details}
         </div>
       </div>
 
-      {/* Circle */}
-      <div style={{
-        position:"absolute", left:circleLeft, top:circleTop,
-        width:CD, height:CD, borderRadius:"50%",
-        background:node.color, boxShadow:`0 0 20px ${node.shadow}`,
-        display:"flex", alignItems:"center", justifyContent:"center",
-        fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1.43rem", color:"#f4e5ca",
-        zIndex:4,
-      }}>
-        {node.id}
+      <div
+        style={{
+          position: "absolute",
+          left: xPercent(circleLeft),
+          top: yPercent(circleTop),
+          width: wPercent(CD),
+          aspectRatio: "1 / 1",
+          borderRadius: "50%",
+          background: event.color,
+          boxShadow: `0 0 20px ${event.shadow}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "var(--font-display)",
+          fontWeight: 900,
+          fontSize: "1.35rem",
+          color: "#f4e5ca",
+          zIndex: 4,
+        }}
+      >
+        {event.id}
       </div>
     </>
   );
 }
 
 function Line({ x1, y1, x2, y2 }) {
-  const dx = x2-x1, dy = y2-y1;
-  const length = Math.sqrt(dx*dx + dy*dy);
-  const angle  = Math.atan2(dy,dx) * (180/Math.PI);
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const length = Math.sqrt(dx * dx + dy * dy);
+  const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+
   return (
-    <div aria-hidden style={{
-        position:"absolute", left:x1, top:y1,
-        width:length, height:2,
-      background:"rgba(244,229,202,0.16)",
-      transformOrigin:"0 50%",
-      transform:`rotate(${angle}deg)`,
-      zIndex:1, borderRadius:1,
-    }}/>
+    <div
+      aria-hidden
+      style={{
+        position: "absolute",
+        left: xPercent(x1),
+        top: yPercent(y1),
+        width: wPercent(length),
+        height: 2,
+        background: "rgba(244,229,202,0.16)",
+        transformOrigin: "0 50%",
+        transform: `rotate(${angle}deg)`,
+        zIndex: 1,
+        borderRadius: 1,
+      }}
+    />
   );
 }
 
-function MobileCircle({ node }) {
+function MobileCircle({ event }) {
   return (
-    <div style={{ width:52, height:52, borderRadius:"50%", background:node.color, boxShadow:`0 0 14px ${node.shadow}`, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"var(--font-display)", fontWeight:900, fontSize:"1rem", color:"#f4e5ca", flexShrink:0 }}>
-      {node.id}
+    <div
+      style={{
+        width: 52,
+        height: 52,
+        borderRadius: "50%",
+        background: event.color,
+        boxShadow: `0 0 14px ${event.shadow}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: "var(--font-display)",
+        fontWeight: 900,
+        fontSize: "1rem",
+        color: "#f4e5ca",
+        flexShrink: 0,
+      }}
+    >
+      {event.id}
     </div>
   );
 }

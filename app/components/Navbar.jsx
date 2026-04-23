@@ -22,8 +22,8 @@ export default function Navbar() {
           : "bg-[radial-gradient(circle_at_top,#90561f_0%,#552f16_40%,#21130b_100%)]"
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-360 items-center justify-between gap-2 px-3 sm:px-6 lg:px-10">
-        <div className="flex items-center gap-2">
+      <div className="mx-auto flex h-16 w-full max-w-360 items-center justify-between gap-3 px-3 sm:px-4 lg:px-10">
+        <div className="flex min-w-0 items-center gap-2">
           <div className="relative h-8 w-7 overflow-hidden">
             <Image
               src="/nexus%20logo.svg"
@@ -33,12 +33,12 @@ export default function Navbar() {
               className="object-contain"
             />
           </div>
-          <span className="font-ocr text-sm uppercase tracking-[0.18em] text-[var(--paper)] sm:text-base">
+          <span className="truncate font-ocr text-[0.72rem] uppercase tracking-[0.18em] text-[var(--paper)] sm:text-sm lg:text-base">
             NEX<span className="text-[var(--gold)]">ZERO</span>
           </span>
         </div>
 
-        <div className="hidden items-center gap-10 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           <a href="#overview" className={linkClass}>
             Overview
           </a>
@@ -47,6 +47,12 @@ export default function Navbar() {
           </a>
           <a href="#agenda" className={linkClass}>
             Agenda
+          </a>
+          <a href="#sponsors" className={linkClass}>
+            Sponsors
+          </a>
+          <a href="#qa" className={linkClass}>
+            Q&A
           </a>
         </div>
 
@@ -61,7 +67,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(216,166,46,0.22)] bg-[rgba(37,21,13,0.48)] text-[var(--paper-soft)] md:hidden"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(216,166,46,0.22)] bg-[rgba(37,21,13,0.48)] text-[var(--paper-soft)] lg:hidden"
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -71,7 +77,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-[rgba(216,166,46,0.16)] bg-[radial-gradient(circle_at_top,#90561f_0%,#552f16_40%,#21130b_100%)] px-4 py-3 md:hidden">
+        <div className="border-t border-[rgba(216,166,46,0.16)] bg-[radial-gradient(circle_at_top,#90561f_0%,#552f16_40%,#21130b_100%)] px-4 py-3 lg:hidden">
           <div className="flex flex-col gap-2">
             <a
               href="#overview"
@@ -85,6 +91,12 @@ export default function Navbar() {
             </a>
             <a href="#agenda" className={mobileLinkClass} onClick={() => setMenuOpen(false)}>
               Agenda
+            </a>
+            <a href="#sponsors" className={mobileLinkClass} onClick={() => setMenuOpen(false)}>
+              Sponsors
+            </a>
+            <a href="#qa" className={mobileLinkClass} onClick={() => setMenuOpen(false)}>
+              Q&A
             </a>
             <a
               href={REGISTRATION_URL}
@@ -106,7 +118,7 @@ const linkClass =
   "text-sm uppercase tracking-[0.14em] text-[rgba(248,238,216,0.76)] transition-colors hover:text-[var(--gold)]";
 
 const buttonClass =
-  "hidden rounded-full bg-[#c98a24] px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#25150d] shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-[#d89a34] sm:inline-flex md:px-4 md:py-2 md:text-xs";
+  "hidden rounded-full bg-[#c98a24] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#25150d] shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-[#d89a34] lg:inline-flex";
 
 const mobileLinkClass =
   "rounded-full border border-[rgba(216,166,46,0.18)] bg-[rgba(37,21,13,0.68)] px-3 py-2 text-sm uppercase tracking-[0.12em] text-[var(--paper)]";

@@ -48,17 +48,17 @@ export default function Hero() {
   return (
     <section
       id="overview"
-      className="font-ocr relative box-border h-[calc(100svh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_top,#90561f_0%,#552f16_40%,#21130b_100%)]"
+      className="font-ocr relative box-border min-h-[calc(100svh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_top,#90561f_0%,#552f16_40%,#21130b_100%)] lg:h-[calc(100svh-4rem)]"
     >
       <div className="pointer-events-none absolute inset-0 bg-[url('/2.png')] bg-cover bg-center opacity-10 mix-blend-screen" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(20,11,6,0.16)_0%,rgba(20,11,6,0.42)_100%)]" />
-      <div className="pointer-events-none absolute -left-[5%] -top-[10%] h-125 w-125 bg-[radial-gradient(circle,rgba(216,166,46,0.18)_0%,transparent_70%)]" />
-      <div className="pointer-events-none absolute right-[8%] top-[12%] h-90 w-90 bg-[radial-gradient(circle,rgba(248,238,216,0.06)_0%,transparent_72%)]" />
+      <div className="pointer-events-none absolute -left-[20%] -top-[10%] h-80 w-80 bg-[radial-gradient(circle,rgba(216,166,46,0.18)_0%,transparent_70%)] sm:-left-[5%] sm:h-125 sm:w-125" />
+      <div className="pointer-events-none absolute right-[2%] top-[10%] h-56 w-56 bg-[radial-gradient(circle,rgba(248,238,216,0.06)_0%,transparent_72%)] sm:right-[8%] sm:top-[12%] sm:h-90 sm:w-90" />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-360 flex-col px-4 py-5 sm:px-6 sm:py-8 lg:px-10">
-        <div className="flex flex-1 flex-wrap items-center justify-between gap-8 sm:gap-10">
-          <div className="max-w-135">
-            <h1 className="text-5xl font-black leading-[1.02] tracking-[0.04em] text-[var(--paper-soft)] sm:text-7xl lg:text-8xl">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-360 flex-col px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
+        <div className="flex flex-1 flex-col items-start justify-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+          <div className="w-full max-w-full lg:max-w-135">
+            <h1 className="text-[3.6rem] font-black leading-[0.98] tracking-[0.04em] text-[var(--paper-soft)] sm:text-7xl lg:text-8xl">
               NEXZERO
             </h1>
             <p className="mb-6 mt-3 text-xs uppercase tracking-[0.14em] text-[rgba(248,238,216,0.72)] sm:text-sm">
@@ -88,7 +88,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative aspect-square w-48 shrink-0 rounded-lg border-2 border-[rgba(248,238,216,0.18)] bg-[rgba(37,21,13,0.22)] sm:w-58 lg:w-65">
+          <div className="relative mx-auto aspect-square w-full max-w-56 shrink-0 self-center rounded-lg border-2 border-[rgba(248,238,216,0.18)] bg-[rgba(37,21,13,0.22)] sm:max-w-58 lg:mx-0 lg:w-65 lg:max-w-none">
             <div className="absolute left-0 top-0 h-3.5 w-3.5 border-l-2 border-t-2 border-[var(--gold)]" />
             <div className="absolute right-0 top-0 h-3.5 w-3.5 border-r-2 border-t-2 border-[var(--gold)]" />
             <div className="absolute bottom-0 left-0 h-3.5 w-3.5 border-b-2 border-l-2 border-[var(--gold)]" />
@@ -105,8 +105,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex w-full items-center justify-center pb-2 sm:pb-4">
-          <div className="flex w-full max-w-4xl flex-wrap justify-center gap-5 rounded-[1.4rem] border border-[rgba(248,238,216,0.16)] bg-[rgba(37,21,13,0.34)] px-5 py-5 backdrop-blur-[2px] sm:gap-6 sm:px-8 sm:py-6">
+        <div className="flex w-full items-center justify-center pt-4 pb-1 sm:pb-4">
+          <div className="flex w-full max-w-4xl flex-wrap justify-center gap-4 rounded-[1.4rem] border border-[rgba(248,238,216,0.16)] bg-[rgba(37,21,13,0.34)] px-4 py-5 backdrop-blur-[2px] sm:gap-6 sm:px-8 sm:py-6">
             {[
               { value: time.days, label: "DAYS" },
               { value: time.hours, label: "HOURS" },
